@@ -16,6 +16,10 @@ func main() {
 		render(w, "test.page.gohtml")
 	})
 
+	http.HandleFunc("/test", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Println("working!")
+	})
+
 	fmt.Printf("Starting front end service on %s:%d\n", HOST, PORT)
 	err := http.ListenAndServe(ADDRESS, nil)
 	if err != nil {
@@ -26,13 +30,13 @@ func main() {
 func render(w http.ResponseWriter, t string) {
 
 	partials := []string{
-		"./front-end/cmd/web/templates/base.layout.gohtml",
-		"./front-end/cmd/web/templates/header.partial.gohtml",
-		"./front-end/cmd/web/templates/footer.partial.gohtml",
+		"./templates/base.layout.gohtml",
+		"./templates/header.partial.gohtml",
+		"./templates/footer.partial.gohtml",
 	}
 
 	var templateSlice []string
-	templateSlice = append(templateSlice, fmt.Sprintf("./front-end/cmd/web/templates/%s", t))
+	templateSlice = append(templateSlice, fmt.Sprintf("./templates/%s", t))
 
 	// for _, x := range partials {
 	// 	templateSlice = append(templateSlice, x)
