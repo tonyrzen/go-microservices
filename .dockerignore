@@ -1,0 +1,6 @@
+package.json
+package-lock.json
+
+workspace.code-workspace
+
+node_modules
