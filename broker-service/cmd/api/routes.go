@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
@@ -27,11 +26,7 @@ func (a *Config) routes() http.Handler {
 	// route declarations
 	mux.Post("/", a.Broker)
 
-	mux.Get("/hello", Hello)
+	mux.Get("/hello", a.Hello)
 
 	return mux
-}
-
-func Hello(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello!")
 }
