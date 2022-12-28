@@ -21,7 +21,7 @@ func main() {
 	// define the HTTP server
 	server := &http.Server{
 		Addr:    ADDRESS,
-		Handler: app.routes(),
+		Handler: logger(app.routes()),
 	}
 
 	// start the server
